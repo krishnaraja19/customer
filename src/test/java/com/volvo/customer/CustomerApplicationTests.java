@@ -54,16 +54,6 @@ class CustomerApplicationTests {
 
 	@Test
 	@Order(2)
-	public void postCustomer_whenCustomerIsValid_updateCustomerInfoToDB(){
-		Long customer_id = 1L;
-		var customerDTO = modelMapper.map(getCustomerWithChangeInfo(),CustomerDTO.class);
-		testRestTemplate.put(API_1_0_UPDATE_CUSTOMER+"/"+customer_id, customerDTO);
-		assertNotEquals(34,customerRepository.getById(1L).getAge());
-	}
-
-
-	@Test
-	@Order(3)
 	public void findCustomerByName_whenIsAvailableInDB(){
 		String name= "Ram";
 		ResponseEntity<CustomersList> customerDetails =
@@ -77,6 +67,15 @@ class CustomerApplicationTests {
 			assertEquals("Ram",customer.getName());
 		});
 
+	}
+
+	@Test
+	@Order(3)
+	public void postCustomer_whenCustomerIsValid_updateCustomerInfoToDB(){
+		Long customer_id = 1L;
+		var customerDTO = modelMapper.map(getCustomerWithChangeInfo(),CustomerDTO.class);
+		testRestTemplate.put(API_1_0_UPDATE_CUSTOMER+"/"+customer_id, customerDTO);
+		assertNotEquals(34,customerRepository.getById(1L).getAge());
 	}
 
 	@Test

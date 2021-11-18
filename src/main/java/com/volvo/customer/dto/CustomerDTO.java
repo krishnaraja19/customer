@@ -1,6 +1,5 @@
 package com.volvo.customer.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
